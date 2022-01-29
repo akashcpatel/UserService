@@ -4,7 +4,7 @@
     "UserService": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "healthcheck",
+      "launchUrl": "actuator/health",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

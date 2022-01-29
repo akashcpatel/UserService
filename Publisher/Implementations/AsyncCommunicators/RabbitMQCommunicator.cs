@@ -15,7 +15,6 @@ namespace Publisher.Implementations.AsyncCommunicators
         public RabbitMQCommunicator([FromServices] ConnectionFactory rabbitConnection)
         {
             _rabbitConnection = rabbitConnection;
-
             SetupRabbitMQ();
         }
 

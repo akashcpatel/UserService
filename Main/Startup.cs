@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Services;
+using Steeltoe.Management.Endpoint;
+using Steeltoe.Management.Endpoint.Health;
 
 namespace Main
 {
@@ -18,6 +20,7 @@ namespace Main
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHealthActuator(Configuration);
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(ExceptionFilter));
@@ -37,8 +40,8 @@ namespace Main
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
-                })
-                .UseHealthChecks("/healthcheck");
+                    endpoints.Map<HealthEndpoint>();
+                });
         }
     }
 }

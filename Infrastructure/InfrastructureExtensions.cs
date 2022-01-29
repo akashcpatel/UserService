@@ -9,7 +9,7 @@ namespace Infrastructure
         public static IServiceCollection AddConfig<T>(this IServiceCollection services, IConfiguration config, string sectionName) where T : class
         {
             services.AddOptions<T>().Bind(config.GetSection(sectionName)).ValidateDataAnnotations();
-            services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<T>>().Value);
+            services.AddScoped(resolver => resolver.GetRequiredService<IOptions<T>>().Value);
 
             return services;
         }

@@ -3,3 +3,23 @@
 ################################################################################
 
 /.vs
+/Main/obj
+/Infrastructure/obj
+/Storage/obj
+/Services/obj
+/Publisher/obj
+/Model/obj
+/UnitTests/Services.Tests/obj
+/UnitTests/Publisher.Tests/obj
+/UnitTests/Model/obj
+/UnitTests/Main/obj
+/UnitTests/Services.Tests/bin/Debug/netcoreapp3.1
+/UnitTests/Publisher.Tests/bin/Debug/netcoreapp3.1
+/UnitTests/Model/bin/Debug/netcoreapp3.1
+/UnitTests/Main/bin/Debug/netcoreapp3.1
+/Storage/bin/Debug
+/Services/bin/Debug/netcoreapp3.1
+/Publisher/bin/Debug
+/Model/bin/Debug/netcoreapp3.1
+/Main/bin/Debug/netcoreapp3.1
+/Infrastructure/bin/Debug/netcoreapp3.1

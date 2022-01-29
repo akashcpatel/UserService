@@ -88,14 +88,14 @@ namespace Services.Tests.Implementations
             Assert.That(user.Id, Is.EqualTo(testUser.Id));
         }
 
-        private async Task TestUpsert(int addCount, User testUser)
+        private async Task TestUpsert(int saveCount, User testUser)
         {
             _userRepositoryMock.Setup(r => r.Save(testUser)).ReturnsAsync(testUser.Id);
 
             await _userService.UpSert(testUser);
 
             _userRepositoryMock.Verify(r => r.Find(testUser.Id), Times.Once);
-            _userRepositoryMock.Verify(r => r.Save(testUser), Times.Exactly(addCount));
+            _userRepositoryMock.Verify(r => r.Save(testUser), Times.Exactly(saveCount));
         }
 
         private User CreateTestUser() =>

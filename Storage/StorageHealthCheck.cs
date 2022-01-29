@@ -1,14 +1,18 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Steeltoe.Common.HealthChecks;
 
 namespace Storage
 {
-    internal class StorageHealthCheck : IHealthCheck
+    internal class StorageHealthContributor : IHealthContributor
     {
-        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        public string Id => nameof(StorageHealthContributor);
+
+        public HealthCheckResult Health()
         {
-            return Task.FromResult(HealthCheckResult.Healthy());
+            return new HealthCheckResult
+            {
+                Description = HealthStatus.UP.ToString(),
+                Status = HealthStatus.UP
+            };
         }
     }
 }
