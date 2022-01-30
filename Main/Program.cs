@@ -16,21 +16,21 @@ namespace Main
         {
             var host = CreateHostBuilder(args).Build();
 
-            using var scope = host.Services.CreateScope();
+            //using var scope = host.Services.CreateScope();
 
-            var serviceProvider = scope.ServiceProvider;
-            try
-            {
-                if (serviceProvider == null)
-                    throw new ArgumentNullException("serviceProvider");
+            //var serviceProvider = scope.ServiceProvider;
+            //try
+            //{
+            //    if (serviceProvider == null)
+            //        throw new ArgumentNullException("serviceProvider");
 
-                serviceProvider.InitializeMyContexts();
-            }
-            catch (Exception ex)
-            {
-                var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred seeding the DB.");
-            }
+            //    serviceProvider.InitializeMyContexts();
+            //}
+            //catch (Exception ex)
+            //{
+            //    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+            //    logger.LogError(ex, "An error occurred seeding the DB.");
+            //}
 
             await host.RunAsync();
         }

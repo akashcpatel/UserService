@@ -16,6 +16,7 @@ namespace Storage
             services.AddConfig<StorageConfig>(config, StorageConfig.PositionInConfig);
 
             services.AddDbContext<UserDataContext>(options => options.UseSqlServer(config), ServiceLifetime.Singleton);
+            services.BuildServiceProvider().InitializeMyContexts();
 
             services.RegisterServices();
             return services;
