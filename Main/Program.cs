@@ -38,7 +38,12 @@ namespace Main
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration(ConfigureApp)
-            .ConfigureLogging((context, builder) => builder.AddDynamicConsole())
+            .ConfigureLogging((context, loggingBuilder) => 
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddConfiguration(context.Configuration.GetSection("Logging"));
+                loggingBuilder.AddDynamicConsole();
+            })
             .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
 
         private static void ConfigureApp(HostBuilderContext hostBuilder, IConfigurationBuilder configBuilder)
