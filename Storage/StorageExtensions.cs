@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Steeltoe.Common.HealthChecks;
 using Steeltoe.Connector.SqlServer.EFCore;
 using Storage.Implementations;
-using System;
 
 namespace Storage
 {
@@ -15,17 +14,17 @@ namespace Storage
         {
             services.AddConfig<StorageConfig>(config, StorageConfig.PositionInConfig);
 
-            services.AddDbContext<UserDataContext>(options => options.UseSqlServer(config), ServiceLifetime.Singleton);
-            services.BuildServiceProvider().InitializeMyContexts();
+            services.AddDatabase(config);
 
             services.RegisterServices();
             return services;
         }
 
-        public static void InitializeMyContexts(this IServiceProvider serviceProvider)
+        private static void AddDatabase(this IServiceCollection services, IConfiguration config)
         {
-            using var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            var db = serviceScope.ServiceProvider.GetService<UserDataContext>();
+            services.AddDbContext<UserDataContext>(options => options.UseSqlServer(config), ServiceLifetime.Singleton);
+
+            var db = services.BuildServiceProvider().GetService<UserDataContext>();
             db.Database.EnsureCreated();
             db.SaveChanges();
         }

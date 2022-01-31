@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Steeltoe.Extensions.Logging;
-using Storage;
-using System;
 using System.Threading.Tasks;
 
 namespace Main
@@ -14,25 +11,7 @@ namespace Main
     {
         public async static Task Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-
-            //using var scope = host.Services.CreateScope();
-
-            //var serviceProvider = scope.ServiceProvider;
-            //try
-            //{
-            //    if (serviceProvider == null)
-            //        throw new ArgumentNullException("serviceProvider");
-
-            //    serviceProvider.InitializeMyContexts();
-            //}
-            //catch (Exception ex)
-            //{
-            //    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
-            //    logger.LogError(ex, "An error occurred seeding the DB.");
-            //}
-
-            await host.RunAsync();
+            await CreateHostBuilder(args).Build().RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

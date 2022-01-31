@@ -13,9 +13,11 @@ namespace Publisher
         public static IServiceCollection AddPublisher(this IServiceCollection services, IConfiguration config)
         {
             services.AddConfig<PublisherConfig>(config, PublisherConfig.PositionInConfig);            
+
             services.AddRabbitMQConnection(config);
 
             services.RegisterServices();
+
             return services;
         }
 

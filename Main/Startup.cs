@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using Services;
 using Steeltoe.Management.Endpoint;
 using Steeltoe.Management.Endpoint.Health;
-using Steeltoe.Management.Endpoint.Metrics;
 
 namespace Main
 {
